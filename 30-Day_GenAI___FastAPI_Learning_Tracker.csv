@@ -1,0 +1,31 @@
+Day,Date,Focus Area,Learning Link,Build Task,Status
+1,2025-07-31,FastAPI,https://fastapi.tiangolo.com/tutorial/,Create GET /hello route,⬜ To Do
+2,2025-08-01,FastAPI,https://fastapi.tiangolo.com/tutorial/path-params/,GET /hello/{name}?time=morning,⬜ To Do
+3,2025-08-02,FastAPI,https://fastapi.tiangolo.com/tutorial/body/,POST /predict_age route with Pydantic,⬜ To Do
+4,2025-08-03,SQL Basics,https://www.w3schools.com/sql/,"Practice SELECT, INSERT, WHERE",⬜ To Do
+5,2025-08-04,FastAPI + DB,https://sqlmodel.tiangolo.com/tutorial/,Connect FastAPI to PostgreSQL (or SQLite),⬜ To Do
+6,2025-08-05,CRUD API,https://sqlmodel.tiangolo.com/tutorial/create-db-and-table/,Task Manager API with CRUD,⬜ To Do
+7,2025-08-06,Review,https://www.youtube.com/watch?v=0sOvCWFmrtA,Refactor API and test with docs,⬜ To Do
+8,2025-08-07,Prompt Engineering,https://www.deeplearning.ai/short-courses/chatgpt-prompt-engineering-for-developers/,Try prompt rewriting in 3 tones,⬜ To Do
+9,2025-08-08,OpenAI API,https://github.com/openai/openai-cookbook,Build /ask GPT route,⬜ To Do
+10,2025-08-09,SQL Filter,https://mode.com/sql-tutorial/,Filter task list by priority,⬜ To Do
+11,2025-08-10,GPT Tuning,https://platform.openai.com/docs/guides/gpt/chat-completions-api,Test temperature and max_tokens,⬜ To Do
+12,2025-08-11,Text Assistant API,https://platform.openai.com/docs/quickstart,Build full assistant route using GPT,⬜ To Do
+13,2025-08-12,Error Handling,https://fastapi.tiangolo.com/tutorial/handling-errors/,Log prompt + response in DB,⬜ To Do
+14,2025-08-13,CORS Setup,https://fastapi.tiangolo.com/tutorial/cors/,Enable frontend access,⬜ To Do
+15,2025-08-14,Break,,Break Day 💤,⬜ To Do
+16,2025-08-15,Break,,Break Day 💤,⬜ To Do
+17,2025-08-16,Break,,Break Day 💤,⬜ To Do
+18,2025-08-17,Break,,Break Day 💤,⬜ To Do
+19,2025-08-18,Break,,Break Day 💤,⬜ To Do
+20,2025-08-19,Embeddings,https://www.deeplearning.ai/short-courses/,Embed 5 FAQ entries with sentence-transformers,⬜ To Do
+21,2025-08-20,Vector Search,https://www.sbert.net/,Find closest FAQ match via cosine similarity,⬜ To Do
+22,2025-08-21,FAISS Search,https://github.com/facebookresearch/faiss/wiki/Getting-started,Create /faqsearch route,⬜ To Do
+23,2025-08-22,RAG Pipeline,https://docs.langchain.com/docs/components/retrievers,Build RAG system: retrieve + generate,⬜ To Do
+24,2025-08-23,Text Classifier,https://scikit-learn.org/stable/tutorial/basic/tutorial.html,Build /classify route (spam/ham),⬜ To Do
+25,2025-08-24,Gradio UI,https://www.gradio.app/guides/,Add UI to /chat or /search,⬜ To Do
+26,2025-08-25,Text Toolkit,,"Combine classify, search, generate into one API",⬜ To Do
+27,2025-08-26,Test & Polish,https://fastapi.tiangolo.com/tutorial/testing/,Refactor & add unit tests,⬜ To Do
+28,2025-08-27,Docs & Deploy,https://render.com/docs/deploy-fastapi,Deploy to Render & write README,⬜ To Do
+29,2025-08-28,Final Review,,Demo your project + interview prep,⬜ To Do
+30,2025-08-29,,,,⬜ To Do
