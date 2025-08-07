@@ -1,16 +1,19 @@
 import streamlit as st
 import pandas as pd
 
-# Set page layout
-st.set_page_config(page_title="30-Day GenAI + FastAPI Tracker", layout="wide")
+st.set_page_config(page_title="📅 30-Day GenAI + FastAPI Tracker", layout="wide")
 st.title("📅 30-Day GenAI + FastAPI Learning Tracker")
 
-# Load data from CSV
+# Load the uploaded CSV
 @st.cache_data
 def load_data():
     return pd.read_csv("30_day_plan.csv")
 
-df = load_data()
+# Load data only once
+if "df" not in st.session_state:
+    st.session_state.df = load_data()
+
+df = st.session_state.df
 
 # Sidebar filters
 with st.sidebar:
@@ -18,7 +21,7 @@ with st.sidebar:
     focus_area = st.multiselect("Focus Area", df['Focus Area'].unique())
     status = st.multiselect("Status", df['Status'].unique())
 
-# Apply filters
+# Filtered dataframe (for viewing)
 filtered_df = df.copy()
 if focus_area:
     filtered_df = filtered_df[filtered_df["Focus Area"].isin(focus_area)]
@@ -31,24 +34,27 @@ col1.metric("Total Tasks", len(df))
 col2.metric("✅ Completed", (df['Status'] == '✅ Done').sum())
 col3.metric("🚧 In Progress", (df['Status'] == '🚧 In Progress').sum())
 
-# Display task checkboxes to mark/unmark completion
-st.markdown("### 📋 Task List (Mark tasks as ✅ Done)")
+# Editable full task table with checkboxes
+st.markdown("### 📋 All Tasks (Mark ✅ Done or 🚧 In Progress)")
 
+edited_rows = []
+
+# Render the full editable table
 for i, row in filtered_df.iterrows():
-    task_label = f"**Day {row['Day']}** - {row['Build Task']} ({row['Focus Area']})"
-    checked = row["Status"] == "✅ Done"
-    checkbox = st.checkbox(task_label, value=checked, key=f"task_{i}")
-    
-    # ✅ Safely update using the original index
-    df.at[i, "Status"] = "✅ Done" if checkbox else "🚧 In Progress"
-
+    col1, col2 = st.columns([0.05, 0.95])
+    is_done = row['Status'] == "✅ Done"
+    checkbox = col1.checkbox("", value=is_done, key=f"task_{i}")
+    task_display = f"**Day {row['Day']}** | 📅 {row['Date']} | 🧠 *{row['Focus Area']}*  \n🔗 [Learning Link]({row['Learning Link']})  \n🛠️ {row['Build Task']}"
+    col2.markdown(task_display)
+    # Update status in the main DataFrame
+    df.at[i, 'Status'] = "✅ Done" if checkbox else "🚧 In Progress"
 
 # Progress breakdown chart
 st.markdown("### 📊 Progress Breakdown")
 status_counts = df['Status'].value_counts()
 st.bar_chart(status_counts)
 
-# Save button (optional)
+# Save button
 if st.button("💾 Save Progress"):
     df.to_csv("30_day_plan.csv", index=False)
-    st.success("Progress saved!")
+    st.success("Progress saved to file!")
