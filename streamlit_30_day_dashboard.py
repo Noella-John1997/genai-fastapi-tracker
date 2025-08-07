@@ -37,10 +37,11 @@ st.markdown("### 📋 Task List (Mark tasks as ✅ Done)")
 for i, row in filtered_df.iterrows():
     task_label = f"**Day {row['Day']}** - {row['Build Task']} ({row['Focus Area']})"
     checked = row["Status"] == "✅ Done"
-    checkbox = st.checkbox(task_label, value=checked, key=f"task_{row.name}")
+    checkbox = st.checkbox(task_label, value=checked, key=f"task_{i}")
     
-    # Update main DataFrame with new status
-    df.at[row.name, "Status"] = "✅ Done" if checkbox else "🚧 In Progress"
+    # ✅ Safely update using the original index
+    df.at[i, "Status"] = "✅ Done" if checkbox else "🚧 In Progress"
+
 
 # Progress breakdown chart
 st.markdown("### 📊 Progress Breakdown")
